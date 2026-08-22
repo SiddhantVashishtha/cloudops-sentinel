@@ -17,6 +17,7 @@ from sentinel.engine.scoring import calculate_score
 from sentinel.scanners import ec2, s3, iam, security_groups
 from sentinel.utils.aws_session import get_region, verify_credentials
 from sentinel.reports.json_report import write_json_report
+from sentinel.reports.html_report import write_html_report
 
 app = typer.Typer(help="CloudOps Sentinel — AWS security & compliance scanner")
 @app.callback()
@@ -39,6 +40,7 @@ def scan(
     service: str = typer.Option(None, help="Scan only one service (ec2, s3, iam, security-groups)"),
     region: str = typer.Option(None, help="AWS region to scan. Defaults to configured region."),
     output: str = typer.Option(None, "--output", "-o", help="Write JSON report to this file path."),
+    html_output: str = typer.Option(None, "--html", help="Write HTML report to this file path."),
 ):
     """Run a security scan against your AWS account."""
     region = region or get_region()
@@ -91,6 +93,9 @@ def scan(
     if output:
         path = write_json_report(result, score_result, output)
         console.print(f"[dim]Report written to: {path}[/dim]\n")
+    if html_output:
+        path = write_html_report(result, score_result, html_output)
+        console.print(f"[dim]HTML report written to: {path}[/dim]\n")
 
 
 def _print_summary(result: ScanResult, score_result) -> None:
