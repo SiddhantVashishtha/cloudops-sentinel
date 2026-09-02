@@ -1,0 +1,197 @@
+{
+  "scan": {
+    "region": "ap-south-1",
+    "scan_started_at": "2026-09-02T16:56:56.612214+00:00",
+    "scan_duration_seconds": 18.87,
+    "resources_scanned": 11,
+    "services_scanned": [
+      "ec2",
+      "s3",
+      "iam",
+      "security-groups"
+    ],
+    "severity_counts": {
+      "CRITICAL": 2,
+      "HIGH": 4,
+      "MEDIUM": 2,
+      "LOW": 3,
+      "INFO": 0
+    },
+    "findings": [
+      {
+        "finding_id": "EC2-001",
+        "resource_type": "ec2_instance",
+        "resource_id": "i-03ff124542a9e6c6c",
+        "severity": "MEDIUM",
+        "title": "Instance has a public IP address",
+        "description": "Instance i-03ff124542a9e6c6c has public IP 13.200.255.234.",
+        "evidence": {
+          "public_ip": "13.200.255.234",
+          "state": "running"
+        },
+        "recommendation": "Confirm this instance needs a public IP. If not, use a private subnet with a NAT gateway or VPC endpoint instead.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:56:57.306365+00:00"
+      },
+      {
+        "finding_id": "S3-003",
+        "resource_type": "s3_bucket",
+        "resource_id": "aws-cloudtrail-logs-381155823693-408d41a3",
+        "severity": "LOW",
+        "title": "S3 bucket versioning not enabled",
+        "description": "Bucket aws-cloudtrail-logs-381155823693-408d41a3 does not have versioning enabled.",
+        "evidence": {
+          "versioning_status": "Disabled"
+        },
+        "recommendation": "Enable versioning to protect against accidental deletion or overwrite.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:56:59.255088+00:00"
+      },
+      {
+        "finding_id": "S3-003",
+        "resource_type": "s3_bucket",
+        "resource_id": "pdf-validator-demo-shreeya",
+        "severity": "LOW",
+        "title": "S3 bucket versioning not enabled",
+        "description": "Bucket pdf-validator-demo-shreeya does not have versioning enabled.",
+        "evidence": {
+          "versioning_status": "Disabled"
+        },
+        "recommendation": "Enable versioning to protect against accidental deletion or overwrite.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:00.095167+00:00"
+      },
+      {
+        "finding_id": "S3-003",
+        "resource_type": "s3_bucket",
+        "resource_id": "sentinel-test-ad9cbe5a",
+        "severity": "LOW",
+        "title": "S3 bucket versioning not enabled",
+        "description": "Bucket sentinel-test-ad9cbe5a does not have versioning enabled.",
+        "evidence": {
+          "versioning_status": "Disabled"
+        },
+        "recommendation": "Enable versioning to protect against accidental deletion or overwrite.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:00.586276+00:00"
+      },
+      {
+        "finding_id": "IAM-001",
+        "resource_type": "iam_user",
+        "resource_id": "CloudArenaDev",
+        "severity": "HIGH",
+        "title": "IAM user does not have MFA enabled",
+        "description": "User CloudArenaDev has no MFA device registered.",
+        "evidence": {},
+        "recommendation": "Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:06.534064+00:00"
+      },
+      {
+        "finding_id": "IAM-002",
+        "resource_type": "iam_user",
+        "resource_id": "CloudArenaDev",
+        "severity": "MEDIUM",
+        "title": "IAM access key older than 90 days",
+        "description": "User CloudArenaDev has an active access key (AKIAVRPVIKBG5U3W5STL) that is 158 days old.",
+        "evidence": {
+          "access_key_id": "AKIAVRPVIKBG5U3W5STL",
+          "age_days": 158,
+          "created": "2026-03-27T20:04:37+00:00"
+        },
+        "recommendation": "Rotate access keys regularly. Consider using temporary credentials (IAM roles) instead of long-lived keys where possible.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:07.780870+00:00"
+      },
+      {
+        "finding_id": "IAM-001",
+        "resource_type": "iam_user",
+        "resource_id": "sentinel-scanner",
+        "severity": "HIGH",
+        "title": "IAM user does not have MFA enabled",
+        "description": "User sentinel-scanner has no MFA device registered.",
+        "evidence": {},
+        "recommendation": "Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:08.980472+00:00"
+      },
+      {
+        "finding_id": "IAM-001",
+        "resource_type": "iam_user",
+        "resource_id": "student-user",
+        "severity": "HIGH",
+        "title": "IAM user does not have MFA enabled",
+        "description": "User student-user has no MFA device registered.",
+        "evidence": {},
+        "recommendation": "Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:11.495148+00:00"
+      },
+      {
+        "finding_id": "IAM-001",
+        "resource_type": "iam_user",
+        "resource_id": "terraform-deployer",
+        "severity": "HIGH",
+        "title": "IAM user does not have MFA enabled",
+        "description": "User terraform-deployer has no MFA device registered.",
+        "evidence": {},
+        "recommendation": "Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:13.958882+00:00"
+      },
+      {
+        "finding_id": "SG-001",
+        "resource_type": "security_group",
+        "resource_id": "sg-045a513e4a6f7b175",
+        "severity": "CRITICAL",
+        "title": "SSH exposed to the internet",
+        "description": "Security group sg-045a513e4a6f7b175 (launch-wizard-2) allows SSH (port 22) inbound from 0.0.0.0/0.",
+        "evidence": {
+          "group_name": "launch-wizard-2",
+          "port": 22,
+          "service": "SSH",
+          "source": "0.0.0.0/0"
+        },
+        "recommendation": "Restrict inbound access on port 22 to specific, trusted CIDR ranges instead of the entire internet.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:15.481855+00:00"
+      },
+      {
+        "finding_id": "SG-001",
+        "resource_type": "security_group",
+        "resource_id": "sg-06ab14464bc76fe9e",
+        "severity": "CRITICAL",
+        "title": "SSH exposed to the internet",
+        "description": "Security group sg-06ab14464bc76fe9e (launch-wizard-1) allows SSH (port 22) inbound from 0.0.0.0/0.",
+        "evidence": {
+          "group_name": "launch-wizard-1",
+          "port": 22,
+          "service": "SSH",
+          "source": "0.0.0.0/0"
+        },
+        "recommendation": "Restrict inbound access on port 22 to specific, trusted CIDR ranges instead of the entire internet.",
+        "region": "ap-south-1",
+        "timestamp": "2026-09-02T16:57:15.481855+00:00"
+      }
+    ]
+  },
+  "score": {
+    "score": 4,
+    "max_score": 100,
+    "status": "FAIL",
+    "severity_counts": {
+      "CRITICAL": 2,
+      "HIGH": 4,
+      "MEDIUM": 2,
+      "LOW": 3,
+      "INFO": 0
+    },
+    "weights_used": {
+      "CRITICAL": 20,
+      "HIGH": 10,
+      "MEDIUM": 5,
+      "LOW": 2,
+      "INFO": 0
+    }
+  }
+}

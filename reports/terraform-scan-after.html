@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CloudOps Sentinel — Scan Report</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 40px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { color: #58a6ff; margin-bottom: 4px; }
+  .subtitle { color: #8b949e; margin-bottom: 24px; }
+  .meta { color: #8b949e; font-size: 14px; margin-bottom: 32px; }
+  .score-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 24px; margin-bottom: 32px; display: flex; align-items: center; gap: 32px; }
+  .score-value { font-size: 48px; font-weight: bold; }
+  .score-pass { color: #3fb950; }
+  .score-warning { color: #d29922; }
+  .score-fail { color: #f85149; }
+  .status-badge { padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 14px; display: inline-block; }
+  .badge-pass { background: #1a3d24; color: #3fb950; }
+  .badge-warning { background: #3d3319; color: #d29922; }
+  .badge-fail { background: #3d1a1a; color: #f85149; }
+  table.summary { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+  table.summary th, table.summary td { text-align: left; padding: 10px 16px; border-bottom: 1px solid #30363d; }
+  .sev-CRITICAL { color: #f85149; font-weight: bold; }
+  .sev-HIGH { color: #f0883e; font-weight: bold; }
+  .sev-MEDIUM { color: #d29922; }
+  .sev-LOW { color: #58a6ff; }
+  .sev-INFO { color: #8b949e; }
+  .finding { background: #161b22; border: 1px solid #30363d; border-left: 4px solid #f85149; border-radius: 6px; padding: 16px 20px; margin-bottom: 16px; }
+  .finding.HIGH { border-left-color: #f0883e; }
+  .finding.MEDIUM { border-left-color: #d29922; }
+  .finding.LOW { border-left-color: #58a6ff; }
+  .finding.INFO { border-left-color: #8b949e; }
+  .finding-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .finding-title { font-weight: bold; font-size: 16px; }
+  .finding-id { color: #8b949e; font-size: 13px; font-family: monospace; }
+  .finding-desc { color: #c9d1d9; margin-bottom: 8px; }
+  .finding-recommendation { color: #8b949e; font-size: 14px; }
+  .finding-recommendation strong { color: #c9d1d9; }
+  footer { color: #8b949e; font-size: 12px; margin-top: 40px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>CloudOps Sentinel</h1>
+  <div class="subtitle">AWS Security & Compliance Report</div>
+  <div class="meta">
+    Region: ap-south-1 &middot;
+    Scanned: 2026-09-02T16:56:56.612214+00:00 &middot;
+    Duration: 18.87s &middot;
+    Services: ec2, s3, iam, security-groups
+  </div>
+
+  <div class="score-card">
+    <div class="score-value score-fail">4/100</div>
+    <div>
+      <div class="status-badge badge-fail">FAIL</div>
+      <div style="margin-top: 8px; color: #8b949e; font-size: 13px;">
+        This is a project-defined risk score, not an official AWS or industry rating.
+      </div>
+    </div>
+  </div>
+
+  <table class="summary">
+    <tr><th>Severity</th><th>Count</th></tr>
+    
+    <tr><td class="sev-CRITICAL">CRITICAL</td><td>2</td></tr>
+    
+    <tr><td class="sev-HIGH">HIGH</td><td>4</td></tr>
+    
+    <tr><td class="sev-MEDIUM">MEDIUM</td><td>2</td></tr>
+    
+    <tr><td class="sev-LOW">LOW</td><td>3</td></tr>
+    
+    <tr><td class="sev-INFO">INFO</td><td>0</td></tr>
+    
+  </table>
+
+  <h2>Findings (11)</h2>
+  
+  <div class="finding MEDIUM">
+    <div class="finding-header">
+      <span class="finding-title">Instance has a public IP address</span>
+      <span class="finding-id">EC2-001 &middot; MEDIUM</span>
+    </div>
+    <div class="finding-desc">Instance i-03ff124542a9e6c6c has public IP 13.200.255.234.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Confirm this instance needs a public IP. If not, use a private subnet with a NAT gateway or VPC endpoint instead.</div>
+  </div>
+  
+  <div class="finding LOW">
+    <div class="finding-header">
+      <span class="finding-title">S3 bucket versioning not enabled</span>
+      <span class="finding-id">S3-003 &middot; LOW</span>
+    </div>
+    <div class="finding-desc">Bucket aws-cloudtrail-logs-381155823693-408d41a3 does not have versioning enabled.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable versioning to protect against accidental deletion or overwrite.</div>
+  </div>
+  
+  <div class="finding LOW">
+    <div class="finding-header">
+      <span class="finding-title">S3 bucket versioning not enabled</span>
+      <span class="finding-id">S3-003 &middot; LOW</span>
+    </div>
+    <div class="finding-desc">Bucket pdf-validator-demo-shreeya does not have versioning enabled.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable versioning to protect against accidental deletion or overwrite.</div>
+  </div>
+  
+  <div class="finding LOW">
+    <div class="finding-header">
+      <span class="finding-title">S3 bucket versioning not enabled</span>
+      <span class="finding-id">S3-003 &middot; LOW</span>
+    </div>
+    <div class="finding-desc">Bucket sentinel-test-ad9cbe5a does not have versioning enabled.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable versioning to protect against accidental deletion or overwrite.</div>
+  </div>
+  
+  <div class="finding HIGH">
+    <div class="finding-header">
+      <span class="finding-title">IAM user does not have MFA enabled</span>
+      <span class="finding-id">IAM-001 &middot; HIGH</span>
+    </div>
+    <div class="finding-desc">User CloudArenaDev has no MFA device registered.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).</div>
+  </div>
+  
+  <div class="finding MEDIUM">
+    <div class="finding-header">
+      <span class="finding-title">IAM access key older than 90 days</span>
+      <span class="finding-id">IAM-002 &middot; MEDIUM</span>
+    </div>
+    <div class="finding-desc">User CloudArenaDev has an active access key (AKIAVRPVIKBG5U3W5STL) that is 158 days old.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Rotate access keys regularly. Consider using temporary credentials (IAM roles) instead of long-lived keys where possible.</div>
+  </div>
+  
+  <div class="finding HIGH">
+    <div class="finding-header">
+      <span class="finding-title">IAM user does not have MFA enabled</span>
+      <span class="finding-id">IAM-001 &middot; HIGH</span>
+    </div>
+    <div class="finding-desc">User sentinel-scanner has no MFA device registered.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).</div>
+  </div>
+  
+  <div class="finding HIGH">
+    <div class="finding-header">
+      <span class="finding-title">IAM user does not have MFA enabled</span>
+      <span class="finding-id">IAM-001 &middot; HIGH</span>
+    </div>
+    <div class="finding-desc">User student-user has no MFA device registered.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).</div>
+  </div>
+  
+  <div class="finding HIGH">
+    <div class="finding-header">
+      <span class="finding-title">IAM user does not have MFA enabled</span>
+      <span class="finding-id">IAM-001 &middot; HIGH</span>
+    </div>
+    <div class="finding-desc">User terraform-deployer has no MFA device registered.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Enable MFA or use a more appropriate identity mechanism (e.g. IAM Identity Center / SSO).</div>
+  </div>
+  
+  <div class="finding CRITICAL">
+    <div class="finding-header">
+      <span class="finding-title">SSH exposed to the internet</span>
+      <span class="finding-id">SG-001 &middot; CRITICAL</span>
+    </div>
+    <div class="finding-desc">Security group sg-045a513e4a6f7b175 (launch-wizard-2) allows SSH (port 22) inbound from 0.0.0.0/0.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Restrict inbound access on port 22 to specific, trusted CIDR ranges instead of the entire internet.</div>
+  </div>
+  
+  <div class="finding CRITICAL">
+    <div class="finding-header">
+      <span class="finding-title">SSH exposed to the internet</span>
+      <span class="finding-id">SG-001 &middot; CRITICAL</span>
+    </div>
+    <div class="finding-desc">Security group sg-06ab14464bc76fe9e (launch-wizard-1) allows SSH (port 22) inbound from 0.0.0.0/0.</div>
+    <div class="finding-recommendation"><strong>Recommendation:</strong> Restrict inbound access on port 22 to specific, trusted CIDR ranges instead of the entire internet.</div>
+  </div>
+  
+
+  <footer>Generated by CloudOps Sentinel &middot; Score methodology documented in README</footer>
+</div>
+</body>
+</html>
