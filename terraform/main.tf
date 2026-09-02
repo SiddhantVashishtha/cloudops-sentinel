@@ -9,7 +9,8 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
+  profile = "terraform-deployer"
 }
 
 # --- Networking: a minimal VPC just for this test environment ---
