@@ -14,16 +14,15 @@ from rich.table import Table
 
 from sentinel.engine.findings import ScanResult, Severity
 from sentinel.engine.scoring import calculate_score
-from sentinel.scanners import ec2, s3, iam, security_groups
-from sentinel.utils.aws_session import get_region, verify_credentials
-from sentinel.reports.json_report import write_json_report
 from sentinel.reports.html_report import write_html_report
+from sentinel.reports.json_report import write_json_report
+from sentinel.scanners import ec2, iam, s3, security_groups
+from sentinel.utils.aws_session import get_region, verify_credentials
 
 app = typer.Typer(help="CloudOps Sentinel — AWS security & compliance scanner")
 @app.callback()
 def main():
     """CloudOps Sentinel CLI."""
-    pass
 console = Console()
 
 # Registry of available scanners: name -> scan function
@@ -78,7 +77,7 @@ def scan(
                 result.add(f)
             result.services_scanned.append(name)
             console.print("[green]✓[/green]")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 — intentional: one scanner failing shouldn't crash the whole run
             console.print(f"[bold red]✗ ({e})[/bold red]")
 
         result.scan_duration_seconds = round(time.time() - start_time, 2)

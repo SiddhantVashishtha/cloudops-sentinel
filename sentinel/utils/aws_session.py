@@ -10,8 +10,9 @@ function instead of mocking boto3 everywhere).
 from __future__ import annotations
 
 import os
+
 import boto3
-from botocore.exceptions import NoCredentialsError, ClientError
+from botocore.exceptions import ClientError, NoCredentialsError
 
 
 def get_region() -> str:
