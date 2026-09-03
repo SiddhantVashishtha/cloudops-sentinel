@@ -72,12 +72,12 @@ resource "aws_security_group" "sentinel_test" {
   description = "Intentionally permissive SG for CloudOps Sentinel demo"
   vpc_id      = aws_vpc.sentinel_test.id
 
-  ingress {
-    description = "SSH open to the world (INTENTIONAL MISCONFIGURATION for demo)"
+    ingress {
+    description = "SSH restricted to trusted CIDR (FIXED - was 0.0.0.0/0)"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["10.0.0.0/16"]
   }
 
   egress {
