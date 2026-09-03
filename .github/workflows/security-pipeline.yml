@@ -27,3 +27,6 @@ jobs:
 
       - name: Lint with ruff
         run: ruff check sentinel/
+        
+      - name: Build Docker image
+        run: docker build -t cloudops-sentinel:${{ github.sha }} .
